@@ -52,3 +52,21 @@ This GitHub repository serves as a learning resource for Laravel and ReactJS dev
         return Inertia::render('Posts/PostComponent');
     });
     ```
+
+## Use Controller With React Component
+
+1. Create new post controller called `PostController`
+    ```bash
+    php artisan make:controller PostController
+    ```
+2. Inside `PostController`, create function called `index` that return a react component
+    ```bash
+    public function index()
+    {
+        return Inertia::render('Posts/PostComponent');
+    }
+    ```
+3. Change the `[GET] /posts` route to something like this
+    ```bash
+    Route::get('/posts', [PostController::class, 'index'])->name('post.index');
+    ```
